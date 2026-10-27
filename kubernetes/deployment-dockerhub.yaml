@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world3
+  namespace: pekko
+spec:
+  selector:
+    matchLabels:
+      app: hello-world3
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world3
+    spec:
+      containers:
+      - name: hello-world3
+        image: zencircletech/pythondemo:v2
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: hmda-docker-regcred
